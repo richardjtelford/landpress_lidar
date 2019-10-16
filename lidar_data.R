@@ -3,6 +3,8 @@ library("tidyverse")
 library("raster")
 library("dynatopmodel")
 
+#lidar data from https://hoydedata.no/LaserInnsyn/
+
 #single tile test
 dtm1 <- raster("data/NDH Nordhordland 5pkt 2018/data/dtm/DTM_32-1-466-153-61.tif")
 
@@ -11,7 +13,7 @@ sp::plot(dtm1, main=c("dtm"))
 
 #upslope area and topographic wetness index
 a.atb1 <- upslope.area(dtm1, fill.sinks = TRUE, log = FALSE, atb = TRUE)
-sp::plot(a.atb1, main=c("Upslope area (m^2/m)", "TWI "))
+sp::plot(a.atb1, main=c("Upslope area (m^2/m)", "TWI"))
 
 
 
