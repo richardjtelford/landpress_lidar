@@ -16,7 +16,15 @@
 .drake/
 
 #data #skip all data as huge files
-data/
+data/NDH Nordhordland 5pkt 2018/metadata/
+data/NDH Nordhordland 5pkt 2018/data/dom/
+*.tif*
+*.tfw
+*.sos
+
+
+!DTM_32-1-466-153-61*
+
 *.xls
 *.csv
 *.Rdata
