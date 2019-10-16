@@ -4,25 +4,19 @@ library("raster")
 library("dynatopmodel")
 
 #single tile test
-dtm1 <- raster("data/NDH Nordhordland 5pkt 2018/data/dtm/DTM_32-1-466-153-62.tif")
+dtm1 <- raster("data/NDH Nordhordland 5pkt 2018/data/dtm/DTM_32-1-466-153-61.tif")
 
 #plot elevation
 sp::plot(dtm1, main=c("dtm"))
 
-#calculate slope and aspect
-slope_aspect <- terrain(dtm, opt=c("slope", "aspect"), unit = "degrees")
-
-sp::plot(slope_aspect, main = c("Slope", "Aspect"))
-
 #upslope area and topographic wetness index
-a.atb1 <- upslope.area(dtm1, atb = TRUE)
-par(tcl = -0.2, mgp = c(2.5, .5, 0))
-sp::plot(a.atb1, main=c("Upslope area (log(m^2/m))", "TWI log(m^2/m)"))
+a.atb1 <- upslope.area(dtm1, fill.sinks = TRUE, log = FALSE, atb = TRUE)
+sp::plot(a.atb1, main=c("Upslope area (m^2/m)", "TWI "))
 
 
 
 
-#import dem
+#import all dem
 dtm <- list.files(path = "data", 
                   pattern = "DTM.*tif$", 
                   recursive = TRUE, 
