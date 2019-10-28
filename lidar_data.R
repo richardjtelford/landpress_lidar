@@ -10,9 +10,11 @@ dtm1 <- raster("data/NDH Nordhordland 5pkt 2018/data/dtm/DTM_32-1-466-153-61.tif
 
 #plot elevation
 sp::plot(dtm1, main=c("dtm"))
+sp::plot(dtm1)
 
 #upslope area and topographic wetness index
-a.atb1 <- upslope.area(dtm1, fill.sinks = TRUE, log = FALSE, atb = TRUE)
+dtm1_s <- focal(dtm1, w = matrix(1 / 25, nc = 5, nr = 5))
+a.atb1 <- upslope.area(dtm1_s, fill.sinks = TRUE, log = FALSE, atb = TRUE, deg = 1)
 sp::plot(a.atb1, main=c("Upslope area (m^2/m)", "TWI"))
 
 
